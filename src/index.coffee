@@ -1,10 +1,9 @@
-import * as M from "@dashkite/masonry"
-import { atlas } from "@dashkite/masonry/atlas"
+import M from "@dashkite/masonry"
+import atlas from "@dashkite/masonry-atlas"
 
-export default ( t ) ->
+export default ( Genie ) ->
 
-  if ( options = ( t.get "presets" )?[ "import-map" ])?
-
+  if ( options = Genie.get "import-map" )?
     t.define "import-map", M.start [
       M.glob ( options.target ? options.targets ), "."
       M.read
