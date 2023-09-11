@@ -4,12 +4,12 @@ import atlas from "@dashkite/masonry-atlas"
 export default ( Genie ) ->
 
   if ( options = Genie.get "import-map" )?
-    t.define "import-map", M.start [
+    Genie.define "import-map", M.start [
       M.glob ( options.target ? options.targets ), "."
       M.read
       M.tr atlas options
       M.write "."
     ]
 
-    t.after "build", "import-map"
+    Genie.after "build", "import-map"
     

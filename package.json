@@ -36,6 +36,7 @@
     "@dashkite/genie-coffee": "link:../genie-coffee"
   },
   "dependencies": {
-    "@dashkite/masonry": "link:../masonry"
+    "@dashkite/masonry": "link:../masonry",
+    "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
 }
