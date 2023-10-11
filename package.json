@@ -36,6 +36,9 @@
     "@dashkite/genie-coffee": "link:../genie-coffee"
   },
   "dependencies": {
+    "@dashkite/atlas": "link:../atlas",
+    "@dashkite/drn-sky": "link:../drn-sky",
+    "@dashkite/joy": "^0.3.16",
     "@dashkite/masonry": "link:../masonry",
     "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
