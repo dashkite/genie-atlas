@@ -11,6 +11,7 @@ export default ( Genie ) ->
 
     configure = Fn.once ->
       SkyPreset.apply
+        provider: "jsdelivr"
         build: "build/browser/src"
         origin: await DRN.resolve "drn:origin/modules/dashkite/com"
 
