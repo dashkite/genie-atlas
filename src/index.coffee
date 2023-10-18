@@ -1,4 +1,5 @@
 import * as Fn from "@dashkite/joy/function"
+import Time from "@dashkite/joy/time"
 import M from "@dashkite/masonry"
 import atlas from "@dashkite/masonry-atlas"
 import * as DRN from "@dashkite/drn-sky"
@@ -6,14 +7,6 @@ import * as SNS from "@dashkite/dolores/sns"
 import * as SQS from "@dashkite/dolores/sqs"
 import SkyPreset from "@dashkite/atlas/presets/sky"
 
-# TODO add to Joy
-debounce = do ( last = 0 ) ->
-  ( interval, f ) -> ->
-    now = Date.now()
-    if ( now - last ) > interval
-      last = now
-      do f
-    
 export default ( Genie ) ->
 
   if ( options = Genie.get "import-map" )?
@@ -25,7 +18,7 @@ export default ( Genie ) ->
           build: "build/browser/src"
           origin: await DRN.resolve "drn:origin/modules/dashkite/com"
 
-      run: debounce 5000, M.start [
+      run: Time.debounce 5000, M.start [
         M.glob ( options.target ? options.targets ), "."
         M.read
         M.tr atlas options
@@ -65,5 +58,5 @@ export default ( Genie ) ->
     Genie.define "import-map:watch", 
       Fn.flow [ Build.configure, Watch.configure, Watch.run ]
 
-    Genie.on "watch", "import-map:watch"
+    Genie.on "watch", "import-map:watch&"
     

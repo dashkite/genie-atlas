@@ -39,7 +39,7 @@
     "@dashkite/atlas": "link:../atlas",
     "@dashkite/dolores": "link:../dolores",
     "@dashkite/drn-sky": "link:../drn-sky",
-    "@dashkite/joy": "^0.3.16",
+    "@dashkite/joy": "link:../joy",
     "@dashkite/masonry": "link:../masonry",
     "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
