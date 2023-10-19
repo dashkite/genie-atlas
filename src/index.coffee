@@ -12,6 +12,7 @@ export default ( Genie ) ->
   if ( options = Genie.get "import-map" )?
 
     Build =
+
       configure: Fn.once ->
         SkyPreset.apply
           provider: "jsdelivr"
@@ -50,13 +51,15 @@ export default ( Genie ) ->
 
           await SNS.subscribe topic, queue
       
-      run: ->
+      # could also be a flow:
+      # https://github.com/dashkite/masonry-targets/issues/2
+      listen: ->    
         loop
           events = await SQS.poll queue
           ( do Build.run ) if events.length > 0
 
     Genie.define "import-map:watch", 
-      Fn.flow [ Build.configure, Watch.configure, Watch.run ]
+      Fn.flow [ Build.configure, Watch.configure, Watch.listen ]
 
     Genie.on "watch", "import-map:watch&"
     
