@@ -19,7 +19,7 @@ export default ( Genie ) ->
           build: "build/browser/src"
           origin: await DRN.resolve "drn:origin/modules/dashkite/com"
 
-      run: Time.debounce 5000, M.start [
+      run: M.start [
         M.glob ( options.target ? options.targets ), "."
         M.read
         M.tr atlas options
@@ -56,7 +56,8 @@ export default ( Genie ) ->
       listen: ->    
         loop
           events = await SQS.poll queue
-          ( do Build.run ) if events.length > 0
+          if events.length > 0
+            await do Build.run
 
     Genie.define "import-map:watch", 
       Fn.flow [ Build.configure, Watch.configure, Watch.listen ]
