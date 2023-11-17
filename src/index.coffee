@@ -2,10 +2,10 @@ import * as Fn from "@dashkite/joy/function"
 import Time from "@dashkite/joy/time"
 import M from "@dashkite/masonry"
 import atlas from "@dashkite/masonry-atlas"
-import * as DRN from "@dashkite/drn-sky"
 import * as SNS from "@dashkite/dolores/sns"
 import * as SQS from "@dashkite/dolores/sqs"
 import SkyPreset from "@dashkite/atlas/presets/sky"
+import configuration from "./configuration"
 
 export default ( Genie ) ->
 
@@ -17,7 +17,7 @@ export default ( Genie ) ->
         SkyPreset.apply
           provider: "jsdelivr"
           build: "build/browser/src"
-          origin: await DRN.resolve "drn:origin/modules/dashkite/com"
+          origin: configuration.provider
 
       run: M.start [
         M.glob ( options.target ? options.targets ), "."
@@ -36,19 +36,8 @@ export default ( Genie ) ->
       configure: 
 
         Fn.once ->
-
-          topic = await do Fn.flow [
-            Fn.wrap "drn:topic/dashkite/development"
-            DRN.resolve 
-            SNS.create
-          ]
-
-          queue = await do Fn.flow [
-            Fn.wrap "drn:queue/dashkite/import-maps"
-            DRN.resolve
-            SQS.create
-          ]
-
+          topic = await SNS.create configuration.topic
+          queue = await SQS.create configuration.queue
           await SNS.subscribe topic, queue
       
       # could also be a flow:

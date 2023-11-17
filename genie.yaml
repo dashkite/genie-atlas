@@ -1,0 +1,10 @@
+coffee:
+  targets:
+    - node
+
+sky:
+  yaml:
+    targets:
+      node:
+        - preset: js
+          glob: "src/**/*.yaml"
