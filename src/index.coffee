@@ -45,6 +45,7 @@ export default ( Genie ) ->
       listen: ->    
         loop
           events = await SQS.poll queue
+          console.log {events}
           if events.length > 0
             await do Build.run
 
