@@ -2,7 +2,13 @@ coffee:
   targets:
     - node
 
-sky:
+drn:
+
+  # we only need this because this module
+  # doesn't use genie-sky
+  resolvers:
+    - "@dashkite/drn-sky"
+
   yaml:
     targets:
       node:
