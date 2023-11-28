@@ -40,7 +40,7 @@
   "dependencies": {
     "@dashkite/atlas": "link:../atlas",
     "@dashkite/dolores": "link:../dolores",
-    "@dashkite/joy": "link:../joy",
+    "@dashkite/joy": "^0.3.16",
     "@dashkite/masonry": "link:../masonry",
     "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
