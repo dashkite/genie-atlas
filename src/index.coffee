@@ -20,7 +20,7 @@ export default ( Genie ) ->
           origin: configuration.provider
 
       run: M.start [
-        M.glob ( options.target ? options.targets ), "."
+        M.glob ( options.target ? options.targets ), root: "."
         M.read
         M.tr atlas options
         M.write "."
