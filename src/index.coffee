@@ -1,55 +1,55 @@
 import * as Fn from "@dashkite/joy/function"
-import Time from "@dashkite/joy/time"
 import M from "@dashkite/masonry"
 import atlas from "@dashkite/masonry-atlas"
 import * as SNS from "@dashkite/dolores/sns"
 import * as SQS from "@dashkite/dolores/sqs"
 import SkyPreset from "@dashkite/atlas/presets/sky"
+import { load } from "@dashkite/drn-loader"
 import configuration from "./configuration"
+
+# sigh...
+debounce = do ({ last } = {}) ->
+  last = 0
+  ( f ) ->
+    ( args... ) ->
+      now = performance.now()
+      if ( now - last ) > 100 #ms
+        last = now
+        f args...
 
 export default ( Genie ) ->
 
+
   if ( options = Genie.get "import-map" )?
 
-    Build =
+    SkyPreset.apply
+      provider: "jsdelivr"
+      build: "build/browser/src"
+      origin: configuration.provider
 
-      configure: Fn.once ->
-        SkyPreset.apply
-          provider: "jsdelivr"
-          build: "build/browser/src"
-          origin: configuration.provider
+    await do load
 
-      run: M.start [
-        M.glob ( options.target ? options.targets ), root: "."
-        M.read
-        M.tr atlas options
-        M.write "."
-      ]
+    targets = options.target ? options.targets
 
-    Genie.define "import-map", 
-      Fn.flow [ Build.configure, Build.run ]
+    Genie.define "import-map", M.start [
+      M.glob targets
+      M.read
+      M.tr atlas options
+      M.write "."
+    ]
 
     Genie.after "build", "import-map"
 
-    Watch = do ({ queue, topic } = {}) ->
-
-      configure: 
-
-        Fn.once ->
-          topic = await SNS.create configuration.topic
-          queue = await SQS.create configuration.queue
-          await SNS.subscribe topic, queue
-      
-      # could also be a flow:
-      # https://github.com/dashkite/masonry-targets/issues/2
-      listen: ->    
-        loop
-          events = await SQS.poll queue
-          if events.length > 0
-            await do Build.run
-
-    Genie.define "import-map:watch", 
-      Fn.flow [ Build.configure, Watch.configure, Watch.listen ]
+    Genie.define "import-map:watch", ->
+      W = await import( "@dashkite/masonry-watch" )
+      do M.start [
+        W.glob glob: targets
+        debounce W.match type: "file", name: [ "add", "change" ], [
+          M.read
+          M.tr atlas options
+          M.write "."
+        ]
+      ]
 
     Genie.on "watch", "import-map:watch&"
     

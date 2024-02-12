@@ -40,8 +40,11 @@
   "dependencies": {
     "@dashkite/atlas": "link:../atlas",
     "@dashkite/dolores": "link:../dolores",
+    "@dashkite/drn-loader": "link:../drn-loader",
     "@dashkite/joy": "^0.3.16",
     "@dashkite/masonry": "link:../masonry",
-    "@dashkite/masonry-atlas": "link:../masonry-atlas"
+    "@dashkite/masonry-atlas": "link:../masonry-atlas",
+    "@dashkite/masonry-targets": "link:../masonry-targets",
+    "@dashkite/masonry-watch": "link:../masonry-watch"
   }
 }

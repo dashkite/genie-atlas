@@ -11,6 +11,9 @@ dependencies:
   '@dashkite/dolores':
     specifier: link:../dolores
     version: link:../dolores
+  '@dashkite/drn-loader':
+    specifier: link:../drn-loader
+    version: link:../drn-loader
   '@dashkite/joy':
     specifier: ^0.3.16
     version: 0.3.16
@@ -20,6 +23,12 @@ dependencies:
   '@dashkite/masonry-atlas':
     specifier: link:../masonry-atlas
     version: link:../masonry-atlas
+  '@dashkite/masonry-targets':
+    specifier: link:../masonry-targets
+    version: link:../masonry-targets
+  '@dashkite/masonry-watch':
+    specifier: link:../masonry-watch
+    version: link:../masonry-watch
 
 devDependencies:
   '@dashkite/amen':
