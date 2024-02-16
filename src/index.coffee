@@ -13,7 +13,7 @@ debounce = do ({ last } = {}) ->
   ( f ) ->
     ( args... ) ->
       now = performance.now()
-      if ( now - last ) > 100 #ms
+      if ( now - last ) > 2000 #ms
         last = now
         f args...
 
@@ -38,18 +38,18 @@ export default ( Genie ) ->
       M.write "."
     ]
 
-    Genie.after "build", "import-map"
+    Genie.after "drn:pug:build", "import-map"
 
-    Genie.define "import-map:watch", ->
-      W = await import( "@dashkite/masonry-watch" )
-      do M.start [
-        W.glob glob: targets
-        debounce W.match type: "file", name: [ "add", "change" ], [
-          M.read
-          M.tr atlas options
-          M.write "."
-        ]
-      ]
+    # Genie.define "import-map:watch", ->
+    #   W = await import( "@dashkite/masonry-watch" )
+    #   do M.start [
+    #     W.glob glob: targets
+    #     debounce W.match type: "file", name: [ "add", "change" ], [
+    #       M.read
+    #       M.tr M.attempt atlas options
+    #       M.write "."
+    #     ]
+    #   ]
 
-    Genie.on "watch", "import-map:watch&"
+    # Genie.on "watch", "import-map:watch&"
     
