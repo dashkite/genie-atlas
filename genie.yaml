@@ -2,13 +2,8 @@ coffee:
   targets:
     - node
 
-drn:
-
-  resolvers:
-    - "@dashkite/drn-sky"
-
-  yaml:
-    targets:
-      node:
-        - preset: js
-          glob: "src/**/*.yaml"
+yaml:
+  targets:
+    node:
+      - preset: js
+        glob: "src/**/*.yaml"

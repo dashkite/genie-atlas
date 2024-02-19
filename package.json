@@ -1,5 +1,5 @@
 {
-  "name": "@dashkite/genie-import-map",
+  "name": "@dashkite/genie-atlas",
   "version": "0.0.0",
   "description": "Task preset for generating import maps.",
   "keywords": [],
@@ -33,18 +33,15 @@
     "@dashkite/amen-console": "^0.0.2",
     "@dashkite/assert": "^0.1.4",
     "@dashkite/drn-sky": "link:../drn-sky",
-    "@dashkite/genie": "^0.7.3",
+    "@dashkite/genie": "link:../genie",
+    "@dashkite/genie-clean": "link:../genie-clean",
     "@dashkite/genie-coffee": "link:../genie-coffee",
-    "@dashkite/genie-yaml-drn": "link:../genie-yaml-drn"
+    "@dashkite/genie-drn": "link:../genie-drn",
+    "@dashkite/genie-yaml": "link:../genie-yaml"
   },
   "dependencies": {
     "@dashkite/atlas": "link:../atlas",
-    "@dashkite/dolores": "link:../dolores",
-    "@dashkite/drn-loader": "link:../drn-loader",
-    "@dashkite/joy": "^0.3.16",
     "@dashkite/masonry": "link:../masonry",
-    "@dashkite/masonry-atlas": "link:../masonry-atlas",
-    "@dashkite/masonry-targets": "link:../masonry-targets",
-    "@dashkite/masonry-watch": "link:../masonry-watch"
+    "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
 }
