@@ -1,0 +1,4 @@
+target: ./build/browser/src/index.html
+entries:
+  - ./build/browser/src/index.js
+            
