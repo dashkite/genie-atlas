@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@dashkite/atlas": "link:../atlas",
-    "@dashkite/masonry": "link:../masonry",
+    "@dashkite/masonry": "0.14.0",
     "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
 }
