@@ -11,7 +11,7 @@ export default ( Genie ) ->
 
   SkyPreset.apply
     provider: "jsdelivr"
-    build: "build/browser/src"
+    build: options.build ? "build/browser/src"
     origin: configuration.provider
 
   targets = options.target ? options.targets
