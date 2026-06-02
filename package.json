@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/genie-atlas",
-  "version": "0.6.28",
+  "version": "0.6.29",
   "description": "Task preset for generating import maps.",
   "keywords": [],
   "homepage": "https://github.com/dashkite/genie-import-map#readme",
