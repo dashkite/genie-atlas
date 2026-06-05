@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/genie-atlas",
-  "version": "0.6.21",
+  "version": "0.6.34",
   "description": "Task preset for generating import maps.",
   "keywords": [],
   "homepage": "https://github.com/dashkite/genie-import-map#readme",
@@ -30,6 +30,7 @@
     "release": "genie release"
   },
   "devDependencies": {
+
     "@dashkite/amen": "0.9.15",
     "@dashkite/amen-console": "0.8.12",
     "@dashkite/assert": "0.7.18",
@@ -40,6 +41,7 @@
     "@dashkite/genie-drn": "0.12.19",
     "@dashkite/genie-release": "0.5.0",
     "@dashkite/genie-yaml": "0.11.13"
+
   },
   "dependencies": {
     "@dashkite/atlas": "link:../atlas",
