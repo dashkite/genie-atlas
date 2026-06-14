@@ -44,6 +44,6 @@
   "dependencies": {
     "@dashkite/atlas": "^0.12.55",
     "@dashkite/masonry": "0.25.14",
-    "@dashkite/masonry-atlas": "link:../masonry-atlas"
+    "@dashkite/masonry-atlas": "^0.5.27"
   }
 }
