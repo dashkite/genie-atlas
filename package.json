@@ -33,7 +33,7 @@
     "@dashkite/amen": "0.9.30",
     "@dashkite/amen-console": "0.8.12",
     "@dashkite/assert": "0.7.18",
-    "@dashkite/drn-sky": "link:../drn-sky",
+    "@dashkite/drn-sky": "^0.8.34",
     "@dashkite/genie": "0.20.14",
     "@dashkite/genie-clean": "0.13.12",
     "@dashkite/genie-coffee": "0.13.15",
@@ -42,7 +42,7 @@
     "@dashkite/genie-yaml": "link:../genie-yaml"
   },
   "dependencies": {
-    "@dashkite/atlas": "link:../atlas",
+    "@dashkite/atlas": "^0.12.55",
     "@dashkite/masonry": "0.25.14",
     "@dashkite/masonry-atlas": "link:../masonry-atlas"
   }
